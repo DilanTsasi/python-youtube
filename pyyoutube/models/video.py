@@ -220,6 +220,10 @@ class VideoStatus(BaseModel, DatetimeTimeMixin):
     madeForKids: Optional[bool] = field(default=None, repr=False)
     selfDeclaredMadeForKids: Optional[bool] = field(default=None, repr=False)
 
+@dataclass
+class VideoLocalization(BaseModel):
+    title: Optional[str] = field(default=None)
+    description: Optional[str] = field(default=None)
 
 @dataclass
 class VideoRecordingDetails(BaseModel, DatetimeTimeMixin):
@@ -263,6 +267,7 @@ class Video(BaseResource):
     topicDetails: Optional[VideoTopicDetails] = field(default=None, repr=False)
     player: Optional[Player] = field(default=None, repr=False)
     recordingDetails: Optional[VideoRecordingDetails] = field(default=None, repr=False)
+    localizations: Optional[dict[str, VideoLocalization]] = field(default=None, repr=False)
     liveStreamingDetails: Optional[VideoLiveStreamingDetails] = field(
         default=None, repr=False
     )
